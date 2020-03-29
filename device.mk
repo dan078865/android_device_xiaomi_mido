@@ -103,9 +103,9 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-#     camera.msm8953 \
-#     libmm-qcamera \
-    Snap
+     camera.msm8953 \
+     libmm-qcamera \
+#    Snap
 
 # Consumerir
 PRODUCT_PACKAGES += \
@@ -117,9 +117,9 @@ PRODUCT_PACKAGES += \
     gralloc.msm8953 \
     hwcomposer.msm8953 \
     memtrack.msm8953 \
-    liboverlay \
-    libjni_livedisplay \
     libtinyxml
+#    liboverlay \
+    libjni_livedisplay \   
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -274,14 +274,19 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/70-mido.rules:system/halium/usr/lib/lxc-android-config/70-mido.rules \
     $(LOCAL_PATH)/ubuntu/mido.conf:system/halium/etc/ubuntu-touch-session.d/mido.conf \
     $(LOCAL_PATH)/ubuntu/mido.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
     $(LOCAL_PATH)/ubuntu/mixer_paths_mido.xml:system/etc/mixer_paths_mido.xml \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
-    $(LOCAL_PATH)/ubuntu/bluetooth-touch-mido.conf:system/halium/etc/init/bluetooth-touch-android.conf \
-    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/usr/share/bluetooth-touch/mido \
-    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
     $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
     $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/video.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/ubuntu/bluetooth-touch-mido.conf:system/halium/etc/init/bluetooth-touch-android.conf \
+    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/usr/share/bluetooth-touch/mido \
+    $(LOCAL_PATH)/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
+    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
+    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
+    $(LOCAL_PATH)/ubuntu/environment:system/halium/etc/environment \
+    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
     $(LOCAL_PATH)/ubuntu/libs/libdataitems.so:system/lib/libdataitems.so \
     $(LOCAL_PATH)/ubuntu/libs/libdrplugin_client.so:system/lib/libdrplugin_client.so \
     $(LOCAL_PATH)/ubuntu/libs/libDRPlugin.so:system/lib/libDRPlugin.so \
@@ -298,3 +303,31 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/libs/liblowi_client.so:system/lib/liblowi_client.so \
     $(LOCAL_PATH)/ubuntu/libs/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
     $(LOCAL_PATH)/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
+
+# UBPorts
+ PRODUCT_PACKAGES += \
+    libubuntu_application_api \
+    libubuntu_application_api_32 \
+    direct_ubuntu_application_sensors_c_api_for_hybris_test \
+    direct_ubuntu_application_sensors_for_hybris_test \
+    libcamera_compat_layer_32 \
+    libmedia_compat_layer_32 \
+    libdroidmedia \
+    libcameraservice_32 \
+    libdroidmedia_32 \
+    libui_compat_layer_32 \
+    libui_compat_layer \
+    libsf_compat_layer_32 \
+    libsf_compat_layer \
+    libaudioflingerglue \
+    libaudioflingerglue_32
+
+#droidmedia
+MINIMEDIA_SENSORSERVER_DISABLE := 1
+
+# telepathy-ofono quirks
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.t-o.quirk.forcesink=sink.primary_output \
+    ro.t-o.quirk.forcesource=source.record_24_primary_input \
+    ro.qc.sensors.wl_dis=true \
+    ubuntu.widi.supported=true
