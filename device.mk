@@ -81,10 +81,19 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     tinymix
 
-# Audio configuration
+# Audio configuration Commented (and rewritten) as per Ubports-santoni fix for voicecall loudspeaker
+# PRODUCT_COPY_FILES += \
+# 	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+# 	$(LOCAL_PATH)/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
+# 	$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+# 	$(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+# 	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+# 	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+# 	$(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+# 	$(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
+
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(LOCAL_PATH)/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
 	$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	$(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
 	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
@@ -325,9 +334,9 @@ PRODUCT_COPY_FILES += \
 #droidmedia
 MINIMEDIA_SENSORSERVER_DISABLE := 1
 
-# telepathy-ofono quirks
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.t-o.quirk.forcesink=sink.primary_output \
-    ro.t-o.quirk.forcesource=source.record_24_primary_input \
-    ro.qc.sensors.wl_dis=true \
-    ubuntu.widi.supported=true
+# telepathy-ofono quirks Commented as per Ubports-santoni fix for voicecall loudspeaker
+# PRODUCT_PROPERTY_OVERRIDES += \
+#     ro.t-o.quirk.forcesink=sink.primary_output \
+#     ro.t-o.quirk.forcesource=source.record_24_primary_input \
+#     ro.qc.sensors.wl_dis=true \
+#     ubuntu.widi.supported=true
