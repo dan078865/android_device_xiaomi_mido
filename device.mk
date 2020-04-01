@@ -72,6 +72,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
+    audio_policy.msm8953 \
     audio.primary.msm8953 \
     audio.r_submix.default \
     audio.usb.default \
@@ -81,40 +82,43 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     tinymix
 
-# Audio configuration Commented (and rewritten) as per Ubports-santoni fix for voicecall loudspeaker
-# PRODUCT_COPY_FILES += \
-# 	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-# 	$(LOCAL_PATH)/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
-# 	$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-# 	$(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
-# 	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-# 	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
-# 	$(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-# 	$(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
-
+# Audio configuration
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
 	$(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-	$(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
-	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
-	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+	$(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
+	$(LOCAL_PATH)/audio/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
 	$(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-	$(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt
-
-# XML Audio configuration files
-PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/audio/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
 	$(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-	$(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
-	$(TOPDIR)frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
-	$(TOPDIR)frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
-	$(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
-	$(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
+	$(LOCAL_PATH)/audio/audio_policy_volumes.xml:system/etc/audio_policy_volumes.xml \
+	$(LOCAL_PATH)/audio/default_volume_tables.xml:system/etc/default_volume_tables.xml \
+	$(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_sku1.xml:system/etc/mixer_paths_qrd_sku1.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_sku2.xml:system/etc/mixer_paths_qrd_sku2.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_skuh.xml:system/etc/mixer_paths_qrd_skuh.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_skuhf.xml:system/etc/mixer_paths_qrd_skuhf.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_skui.xml:system/etc/mixer_paths_qrd_skui.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_skum.xml:system/etc/mixer_paths_qrd_skum.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_qrd_skun.xml:system/etc/mixer_paths_qrd_skun.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_wcd9306.xml:system/etc/mixer_paths_wcd9306.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_wcd9326.xml:system/etc/mixer_paths_wcd9326.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_wcd9330.xml:system/etc/mixer_paths_wcd9330.xml \
+	$(LOCAL_PATH)/audio/mixer_paths_wcd9335.xml:system/etc/mixer_paths_wcd9335.xml \
+	$(LOCAL_PATH)/audio/r_submix_audio_policy_configuration.xml:system/etc/r_submix_audio_policy_configuration.xml \
+	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9306.xml:system/etc/sound_trigger_mixer_paths_wcd9306.xml \
+	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9330.xml:system/etc/sound_trigger_mixer_paths_wcd9330.xml \
+	$(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9335.xml:system/etc/sound_trigger_mixer_paths_wcd9335.xml \
+	$(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml \
+	$(LOCAL_PATH)/audio/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml
 
 # Camera
 PRODUCT_PACKAGES += \
-     camera.msm8953 \
-     libmm-qcamera \
-#    Snap
+    libshim_camera \
+    Snap
 
 # Consumerir
 PRODUCT_PACKAGES += \
@@ -126,9 +130,8 @@ PRODUCT_PACKAGES += \
     gralloc.msm8953 \
     hwcomposer.msm8953 \
     memtrack.msm8953 \
+    liboverlay \
     libtinyxml
-#    liboverlay \
-    libjni_livedisplay \   
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -193,8 +196,10 @@ PRODUCT_PACKAGES += \
 # Media 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_8956.xml:system/etc/media_codecs_8956.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/media_profiles_8956.xml:system/etc/media_profiles_8956.xml
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -203,6 +208,7 @@ PRODUCT_COPY_FILES += \
 
 # OMX
 PRODUCT_PACKAGES += \
+    libmm-omxcore \
     libc2dcolorconvert \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -227,10 +233,13 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom.usb.rc \
-    init.qcom.usb.sh \
+    init.qti.ims.sh \
     init.target.rc \
-    ueventd.qcom.rc
+    init_setup_first_boot.sh \
+    init_hcismd_up.sh \
+    ueventd.qcom.rc \
+    init.qcom.usb.rc
+#   init.qcom.usb.sh
 
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
@@ -277,66 +286,59 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
-#Ubuntu
+################
+# Ubuntu Touch #
+################
+
+# Wakelock
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qc.sensors.wl_dis=true
+
+# droidmedia doesn't support HAL3 yet
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=0
+
+# Aethercast is currently disabled due to kernel panic, will get reenabled at some point.
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ubuntu.widi.supported=1
+
+# Ubuntu Touch Fix MTP connection
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ubuntu/70-mido.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    $(LOCAL_PATH)/ubuntu/70-mido.rules:system/halium/usr/lib/lxc-android-config/70-mido.rules \
-    $(LOCAL_PATH)/ubuntu/mido.conf:system/halium/etc/ubuntu-touch-session.d/mido.conf \
-    $(LOCAL_PATH)/ubuntu/mido.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
-    $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
-    $(LOCAL_PATH)/ubuntu/mixer_paths_mido.xml:system/etc/mixer_paths_mido.xml \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/etc/apparmor.d/hardware/video.d/apparmor-easyprof-ubuntu_android \
-    $(LOCAL_PATH)/ubuntu/bluetooth-touch-mido.conf:system/halium/etc/init/bluetooth-touch-android.conf \
-    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/usr/share/bluetooth-touch/mido \
-    $(LOCAL_PATH)/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
-    $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
-    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
-    $(LOCAL_PATH)/ubuntu/environment:system/halium/etc/environment \
-    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
-    $(LOCAL_PATH)/ubuntu/libs/libdataitems.so:system/lib/libdataitems.so \
-    $(LOCAL_PATH)/ubuntu/libs/libdrplugin_client.so:system/lib/libdrplugin_client.so \
-    $(LOCAL_PATH)/ubuntu/libs/libDRPlugin.so:system/lib/libDRPlugin.so \
-    $(LOCAL_PATH)/ubuntu/libs/libevent_observer.so:system/lib/libevent_observer.so \
-    $(LOCAL_PATH)/ubuntu/libs/libI420colorconvert.so:system/lib/libI420colorconvert.so \
-    $(LOCAL_PATH)/ubuntu/libs/libizat_core.so:system/lib/libizat_core.so \
-    $(LOCAL_PATH)/ubuntu/libs/liblbs_core.so:system/lib/liblbs_core.so \
-    $(LOCAL_PATH)/ubuntu/libs/libloc_adapter.so:system/lib/libloc_adapter.so \
-    $(LOCAL_PATH)/ubuntu/libs/libloc_api-rpc-qc.so:system/lib/libloc_api-rpc-qc.so \
-    $(LOCAL_PATH)/ubuntu/libs/libloc_api_v02.so:system/lib/libloc_api_v02.so \
-    $(LOCAL_PATH)/ubuntu/libs/liblocationservice_glue.so:system/lib/liblocationservice_glue.so \
-    $(LOCAL_PATH)/ubuntu/libs/liblocationservice.so:system/lib/liblocationservice.so \
-    $(LOCAL_PATH)/ubuntu/libs/libloc_ds_api.so:system/lib/libloc_ds_api.so \
-    $(LOCAL_PATH)/ubuntu/libs/liblowi_client.so:system/lib/liblowi_client.so \
-    $(LOCAL_PATH)/ubuntu/libs/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
-    $(LOCAL_PATH)/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
+    $(LOCAL_PATH)/rootdir/system/halium/usr/share/usbinit/setupusb:system/halium/usr/share/usbinit/setupusb \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/init/mtp-state.conf:system/halium/etc/init/mtp-state.conf
 
-# UBPorts
- PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     libubuntu_application_api \
-    libubuntu_application_api_32 \
-    direct_ubuntu_application_sensors_c_api_for_hybris_test \
-    direct_ubuntu_application_sensors_for_hybris_test \
-    libcamera_compat_layer_32 \
-    libmedia_compat_layer_32 \
+    libcameraservice \
     libdroidmedia \
-    libcameraservice_32 \
-    libdroidmedia_32 \
-    libui_compat_layer_32 \
+    libcamera_compat_layer \
+    libmedia_compat_layer \
     libui_compat_layer \
-    libsf_compat_layer_32 \
     libsf_compat_layer \
+    minimediaservice \
+    minisfservice \
+    libminisf \
     libaudioflingerglue \
-    libaudioflingerglue_32
+    miniafservice
 
-#droidmedia
+## Power off charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
+
+## Disable FakeSensorServer so UBports can use it
 MINIMEDIA_SENSORSERVER_DISABLE := 1
 
-# telepathy-ofono quirks Commented as per Ubports-santoni fix for voicecall loudspeaker
-# PRODUCT_PROPERTY_OVERRIDES += \
-#     ro.t-o.quirk.forcesink=sink.primary_output \
-#     ro.t-o.quirk.forcesource=source.record_24_primary_input \
-#     ro.qc.sensors.wl_dis=true \
-#     ubuntu.widi.supported=true
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/etc/init/servicemanager.rc:system/etc/init/servicemanager.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init_hcismd_up.sh:system/etc/init_hcismd_up.sh \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/init/device-hacks.conf:system/halium/etc/init/device-hacks.conf \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/init/ofono.override:system/halium/etc/init/ofono.override \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/init/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
+    $(LOCAL_PATH)/rootdir/system/halium/etc/ubuntu-touch-session.d/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/rootdir/system/halium/lib/udev/rules.d/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    $(LOCAL_PATH)/rootdir/system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/rootdir/system/halium/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/video.d/apparmor-easyprof-ubuntu_android \
+    $(LOCAL_PATH)/rootdir/system/halium/usr/share/powerd/device_configs/config-default.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
+    $(LOCAL_PATH)/rootdir/system/halium/usr/share/upstart/sessions/usensord.conf:system/halium/usr/share/upstart/sessions/usensord.conf
